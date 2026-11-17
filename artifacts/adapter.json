@@ -1,0 +1,20 @@
+{
+  "constraint_residual": 0.0,
+  "dim": 2,
+  "matrix": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.9230769230769231,
+      0.4461538461538462
+    ]
+  ],
+  "objective": 0.6276923076923078,
+  "rank": 1,
+  "ridge": 0.5,
+  "rows": 3,
+  "schema": "constrained_ridge_adapter/1",
+  "unconstrained_objective": 0.6217142857142857
+}

@@ -1,0 +1,170 @@
+{
+  "method": {
+    "adapter": "Constrained ridge: J(W)=||XW-T||_F^2+lambda||W-I||_F^2 s.t. AW=A. AW=A is reduced to QW=Q for an orthonormal basis Q of rowspace(A); W=Q^T Q+P^T V with P an orthonormal complement, V solved from the small SPD normal equation (PHP^T)V=PH(W0-Q^T Q), W0=(X^T X+lambda I)^-1(X^T T+lambda I). Direct constrained solve, no post-hoc row overwrite. Rank via relative-tolerance SVD; empty X -> W=I (W0=I is feasible).",
+    "recognizer": "Per class: mu_c and population covariance Sigma_c=(sum (z-mu)(z-mu)^T)/n + tau I under the current W. s_c(z)=(z-mu_c)^T Sigma_c^-1 (z-mu_c) via solve. p_c=(1+#{calibration s_c>=query s_c})/(n_cal+1), ties counted; accept {c: p_c>alpha}; empty=unknown, one=unique, many=ambiguous keeping all candidates. No coverage guarantee for arbitrary unknown distributions.",
+    "versioning": "Model stores W, means, population covariances and calibration scores plus SHA-256 fingerprints; verify_model re-derives all statistics from the stored W and the supplied data to detect a new W with stale statistics."
+  },
+  "adapter": {
+    "matrix": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.9230769230769231,
+        0.4461538461538462
+      ]
+    ],
+    "objective": 0.6276923076923078,
+    "rank": 1,
+    "constraint_residual": 0.0,
+    "ridge": 0.5,
+    "dim": 2,
+    "rows": 3,
+    "unconstrained_objective": 0.6217142857142857,
+    "schema": "constrained_ridge_adapter/1"
+  },
+  "recognizer": {
+    "classes": [
+      "amber",
+      "blue"
+    ],
+    "shrinkage": 0.2,
+    "means": {
+      "amber": [
+        0.046153846153846156,
+        0.02230769230769231
+      ],
+      "blue": [
+        2.069230769230769,
+        0.03346153846153846
+      ]
+    },
+    "covariances": {
+      "amber": [
+        [
+          0.28334319526627216,
+          0.011840236686390533
+        ],
+        [
+          0.011840236686390533,
+          0.2024881656804734
+        ]
+      ],
+      "blue": [
+        [
+          0.4985207100591716,
+          0.1078491124260355
+        ],
+        [
+          0.1078491124260355,
+          0.23918860946745563
+        ]
+      ]
+    },
+    "calibration_scores": {
+      "amber": [
+        0.07668824667908718,
+        0.04082314792208616,
+        0.2714174330225522,
+        0.6127388464571063
+      ],
+      "blue": [
+        0.19520951322336966,
+        0.15041960876509552,
+        0.1918575809863104,
+        1.524048524660151
+      ]
+    },
+    "calibration_counts": {
+      "amber": 4,
+      "blue": 4
+    },
+    "fingerprint": "526ad336b78d90b76df74da715bc85fcbe41fc040f70ebeeb166e2d7d11442c5"
+  },
+  "predictions": [
+    {
+      "decision": "unknown",
+      "classes": [],
+      "scores": {
+        "amber": 0.7754976025472753,
+        "blue": 6.522710649610216
+      },
+      "exceed_counts": {
+        "amber": 0,
+        "blue": 0
+      },
+      "denominators": {
+        "amber": 5,
+        "blue": 5
+      },
+      "pvalues": {
+        "amber": 0.2,
+        "blue": 0.2
+      }
+    },
+    {
+      "decision": "unknown",
+      "classes": [],
+      "scores": {
+        "amber": 3.2301591834998225,
+        "blue": 2.4746465103500204
+      },
+      "exceed_counts": {
+        "amber": 0,
+        "blue": 0
+      },
+      "denominators": {
+        "amber": 5,
+        "blue": 5
+      },
+      "pvalues": {
+        "amber": 0.2,
+        "blue": 0.2
+      }
+    },
+    {
+      "decision": "unknown",
+      "classes": [],
+      "scores": {
+        "amber": 29.667213649566794,
+        "blue": 1.7032019838855093
+      },
+      "exceed_counts": {
+        "amber": 0,
+        "blue": 0
+      },
+      "denominators": {
+        "amber": 5,
+        "blue": 5
+      },
+      "pvalues": {
+        "amber": 0.2,
+        "blue": 0.2
+      }
+    }
+  ],
+  "verification": {
+    "adapter": {
+      "objective": 0.6276923076923078,
+      "reported_objective": 0.6276923076923078,
+      "objective_agrees": true,
+      "constraint_residual": 0.0,
+      "kkt_residual": 4.440892098500626e-16,
+      "kkt_residual_unconstrained": 0.08970695222838901,
+      "rank": 1,
+      "within_tolerance": true,
+      "is_stationary": true,
+      "atol": 2e-08,
+      "rtol": 2e-08
+    },
+    "recognizer": {
+      "seal_ok": true,
+      "adapter_fingerprint_ok": true,
+      "classes_match": true,
+      "max_abs_error": 0.0,
+      "statistics_match_current_data": true,
+      "is_consistent": true
+    }
+  }
+}
